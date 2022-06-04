@@ -42,7 +42,7 @@ export default function AboutMe() {
       </button>
       
     </span>
-    <p className="text-xl font-poppins mt-5 font-normal">Entrepreneur, former tennis player & Web3 developer!</p>
+    <p className="text-3xl font-poppins mt-5 font-semibold">Entrepreneur, former tennis player & Web3 developer!</p>
     <p className="font-poppins mt-5 font-extralight">After I decided to end up my 6-years-old marketing career (2021) I started to study the
     technology behind blockchain (especially Web3). </p>
     
@@ -54,7 +54,7 @@ export default function AboutMe() {
     <a href="https://www.drivenecosystem.com/" target="_blank" className="underline">DRIVENecosystem</a>&nbsp; for which I am still working with my amazing team.</p>
 <p>But don't worry: I have enough time for your project too!</p>
 <br />
-    <p className="text-4xl font-poppins font-semibold mt-10">How could I be a good choice for your project?</p>
+    <p className="text-3xl font-poppins mt-5 font-semibold mt-10">How could I be a good choice for your project?</p>
     <p className="font-light mt-2">To be a project owner is not easy: programming skills are not enough.
     You need to be good (and/or willing to become better) at marketing, communication, management and relationships
     </p>
