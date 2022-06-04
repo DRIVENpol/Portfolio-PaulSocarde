@@ -43,7 +43,7 @@ export default function AboutMe() {
       
     </span>
     <p className="text-xl font-poppins mt-5 font-normal">Entrepreneur, former tennis player & Web3 developer!</p>
-    <p className="px-10 font-poppins mt-5 font-extralight">After I decided to end up my 6-years-old marketing career (2021) I started to study the
+    <p className="font-poppins mt-5 font-extralight">After I decided to end up my 6-years-old marketing career (2021) I started to study the
     technology behind blockchain (especially Web3). </p>
     
     <p className="font-extralight">Wasn't an easy step but not as hard as I thought: as 
