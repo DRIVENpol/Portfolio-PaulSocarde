@@ -84,7 +84,7 @@ export default function Example() {
                     focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-indigo-500"
                   >
                     <PlusSmIcon className="-ml-1 mr-2 h-5 w-5" aria-hidden="true" />
-                    <span>Connect your wallet</span>
+                    <span>Contact Me</span>
                   </button>
 
                 </div>
@@ -118,7 +118,7 @@ export default function Example() {
                     focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-indigo-500
                     ml-3 mb-10"
                   >
-                    <span>Connect your wallet</span>
+                    <span>Contact Me</span>
                   </button>
           </Disclosure.Panel>
         </>
