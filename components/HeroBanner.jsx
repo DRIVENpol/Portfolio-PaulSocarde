@@ -12,7 +12,7 @@ export default function HeroBanner() {
         Not Connected
       </span>
     <p className="text-4xl font-poppins font-semibold mt-10">👋🏻 Hello, World!</p>
-    <p className="text-xl font-poppins mt-5 mb-20 font-normal">My name is Paul Socarde! Welcome to my playground!</p>
+    <p className="text-2xl font-poppins mt-5 mb-20 font-normal">My name is Paul Socarde! Welcome to my playground!</p>
     <p className="text-xl font-poppins mt-5 font-light">As I don't want to waste your time or get you bored, this portfolio will be a little bit different than what you saw until now.</p>
     <p className="text-xl font-poppins mt-5 mb-20 font-light">So please connect your wallet using Rinkeby Testnet, get some ETH from faucet and enjoy!</p>
 
