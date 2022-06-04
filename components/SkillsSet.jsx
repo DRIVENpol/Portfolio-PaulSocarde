@@ -2,9 +2,9 @@ const stats = [
     { name: 'ERC20 | ERC721 | ERC1155 | Custom Smart Contracts', stat: 'Solidity Programming' },
     { name: 'Next.js | React.js | Ethers.js', stat: 'Web Interfaces' },
     { name: 'SWC Errors | Manual Testing', stat: 'Security & Audits' },
-    { name: 'SWC Errors | Manual Testing', stat: 'Security & Audits' },
-    { name: 'SWC Errors | Manual Testing', stat: 'Security & Audits' },
-    { name: 'SWC Errors | Manual Testing', stat: 'Security & Audits' },
+    { name: 'Influencers | Paid Advertising | Organic', stat: 'Marketing' },
+    { name: 'Managing Teams | Partners', stat: 'Management' },
+    { name: 'CMC | CG | Exchanges', stat: 'Listings' },
   ]
   
   export default function Example() {
