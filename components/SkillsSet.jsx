@@ -1,7 +1,10 @@
 const stats = [
     { name: 'ERC20 | ERC721 | ERC1155 | Custom Smart Contracts', stat: 'Solidity Programming' },
     { name: 'Next.js | React.js | Ethers.js', stat: 'Web Interfaces' },
-    { name: 'Avg. Click Rate', stat: '24.57%' },
+    { name: 'SWC Errors | Manual Testing', stat: 'Security & Audits' },
+    { name: 'SWC Errors | Manual Testing', stat: 'Security & Audits' },
+    { name: 'SWC Errors | Manual Testing', stat: 'Security & Audits' },
+    { name: 'SWC Errors | Manual Testing', stat: 'Security & Audits' },
   ]
   
   export default function Example() {

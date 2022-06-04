@@ -114,7 +114,7 @@ export default function Example() {
             <button
                     type="button"
                     className="relative inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-sm font-medium 
-                    rounded-md text-white bg-teal-400 hover:bg-teal-500 dark:bg-sky-500 dark:hover:bg-sky-600
+                    rounded-md text-white bg-indigo-600 hover:bg-indigo-500 dark:bg-indigo-600 dark:hover:bg-indigo-500
                     focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-indigo-500
                     ml-3 mb-10"
                   >
