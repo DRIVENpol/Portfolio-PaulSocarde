@@ -1,6 +1,6 @@
 import { PlusSmIcon } from '@heroicons/react/solid'
 
-export default function HeroBanner() {
+export default function HeroBanner(props) {
     return (
     <div id="banner" className="text-center
     bg-slate-400 dark:bg-slate-700
@@ -23,8 +23,10 @@ export default function HeroBanner() {
                     font-medium rounded-md text-white  bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:outline-none focus:ring-2 
                     focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-indigo-500
                     "
+                    onClick={props.changeContent}
                   >
-                    <span>DAPPs Page</span>
+                  {props.isDapp ? (<><span>Back To Homepage</span></>) : (<> <span>DAPPs Page</span></>)}
+                   
     </button>
     </div>
     )

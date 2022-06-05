@@ -1,20 +1,28 @@
-import React from "react"
+import React, { useState } from "react"
 
 import Navbar from '../components/Navbar'
+import Footer from '../components/Footer'
 import HeroBanner from '../components/HeroBanner'
-import AboutMe from "../components/AboutMe"
-import Skills from "../components/Skills"
-import Footer from "../components/Footer"
-import Articles from "../components/Articles"
+import ContentNormal from '../components/ContentNormal'
+
 
 export default function Home() {
+
+  const [isDapp, setIsDapp] = useState(false);
+
+  const changeContent = () => {
+    if(isDapp === false) {
+      setIsDapp(true);
+    } else {
+      setIsDapp(false);
+    }
+  }
+
   return (
    <>
     <Navbar />
-    <HeroBanner />
-    <AboutMe />
-    <Skills />
-    <Articles />
+    <HeroBanner changeContent={changeContent} isDapp={isDapp} />
+    {!isDapp ? (<ContentNormal />): null}
     <Footer />
    </>
   )
