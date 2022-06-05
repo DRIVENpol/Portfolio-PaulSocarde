@@ -3,11 +3,11 @@ import React from 'react'
 const Article = (props) => {
   return (
     <div className="mx-10 bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
-    <a href={props.l}>
+    <a href={props.l} target="_blank">
         <img className="rounded-t-lg" src={props.i} alt={props.i} />
     </a>
     <div className="p-5">
-        <a href="#">
+        <a href={props.l} target="_blank">
             <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{props.t}</h5>
         </a>
         <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">{props.d}</p>
