@@ -169,6 +169,7 @@ const DappFetcher = () => {
           setProvider(providerOptions.walletconnect)
         }
     }, []);
+    
   return (
     <>
         <ConnectSection cw={connectWallet} ac={account} />
