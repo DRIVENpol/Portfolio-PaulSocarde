@@ -7,7 +7,7 @@ const Footer = () => {
     <div><footer className="p-4 bg-white sm:p-6 dark:bg-gray-800 justify-center">
     <div className="flex justify-center">
         <div className="mb- md:mb-0">
-            <a href="https://flowbite.com" className="flex">
+            <a href="/" className="flex">
                 <img src={Emoji.src} className="mr-3 h-40" alt="Paul Socarde" />
             </a>
         </div>
