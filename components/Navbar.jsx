@@ -20,7 +20,6 @@ export default function Navbar() {
       { name: 'About Me', href: '#about', current: '' },
       { name: 'Skills', href: '#skills', current: ''},
       { name: 'Articles', href: '#articles', current: ''},
-      { name: 'Calendar', href: '#', current: '' },
     ]
 
   return (  <>
