@@ -4,7 +4,7 @@ import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 import HeroBanner from '../components/HeroBanner'
 import ContentNormal from '../components/ContentNormal'
-
+import DappFetcher from "../components/DappFetcher"
 
 export default function Home() {
 
@@ -22,7 +22,7 @@ export default function Home() {
    <>
     <Navbar />
     <HeroBanner changeContent={changeContent} isDapp={isDapp} />
-    {!isDapp ? (<ContentNormal />): null}
+    {!isDapp ? (<ContentNormal />): (<DappFetcher />)}
     <Footer />
    </>
   )
