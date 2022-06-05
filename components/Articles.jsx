@@ -24,7 +24,7 @@ export default function Articles() {
       ];
 
     return (
-    <div id="about" className="text-center
+    <div id="articles" className="text-center
     bg-slate-300 dark:bg-slate-600
     text-slate-600 dark:text-white px-5 py-20">
      <p className="text-4xl font-poppins font-semibold mt-10">📰 My latest articles!</p>

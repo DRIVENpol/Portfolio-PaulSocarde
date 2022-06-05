@@ -19,7 +19,7 @@ export default function Navbar() {
     const navigation = [
       { name: 'About Me', href: '#about', current: '' },
       { name: 'Skills', href: '#skills', current: ''},
-      { name: 'Projects', href: '#', current: ''},
+      { name: 'Articles', href: '#articles', current: ''},
       { name: 'Calendar', href: '#', current: '' },
     ]
 
