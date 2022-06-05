@@ -167,7 +167,6 @@ const DappFetcher = () => {
           setProvider(new ethers.providers.Web3Provider(window.ethereum))
         } else {
           setProvider(providerOptions.walletconnect)
-          getMintedNft();
         }
     }, []);
   return (
