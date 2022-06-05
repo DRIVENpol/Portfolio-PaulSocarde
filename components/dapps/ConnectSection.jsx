@@ -8,15 +8,14 @@ const ConnectSection = (props) => {
     text-slate-600 dark:text-white px-5 py-20">
     
     <p className="text-3xl font-poppins mt-5 font-semibold">Step 1: Connect your wallet</p>
-    <button
+    <button         onClick={props.cw}
                     type="button"
                     className="relative inline-flex items-center px-8 py-4 border border-transparent shadow-sm text-sm font-medium 
                     rounded-md text-white  bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl
                     focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-indigo-500
                     ml-3 my-10"
-                    onClick={props.cw}
                   >
-                    <span>Connect your wallet</span>
+                    Connect your wallet
                   </button>
     </div>
     </>

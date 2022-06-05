@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react'
 
+import { networkParams } from "./dapps/Utils/Networks";
 import { ethers } from "ethers";
 import Web3Modal from "web3modal";
 import { providerOptions } from "./dapps/Utils/providerOptions";
-import { networkParams } from "./dapps/Utils/Networks";
 
 import ConnectSection from './dapps/ConnectSection'
 
@@ -19,7 +19,7 @@ const DappFetcher = () => {
     const [signedMessage, setSignedMessage] = useState("");
     const [verified, setVerified] = useState();
 
-
+console.log(account)
     const connectWallet = async () => {
         if (typeof window !== 'undefined'){
           try {
