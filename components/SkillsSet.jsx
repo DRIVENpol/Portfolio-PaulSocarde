@@ -7,7 +7,7 @@ const stats = [
     { name: 'CMC | CG | Exchanges', stat: 'Listings' },
   ]
   
-  export default function Example() {
+  export default function SkillSet() {
     return (
       <div>
         <dl className="mt-5 grid grid-cols-1 gap-5 sm:grid-cols-3 mb-20">

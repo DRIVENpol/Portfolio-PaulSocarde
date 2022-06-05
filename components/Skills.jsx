@@ -2,7 +2,7 @@ import { PlusSmIcon } from '@heroicons/react/solid'
 
 import SkillsSet from './SkillsSet'
 
-export default function HeroBanner() {
+export default function Skills() {
     return (
     <div className="text-center
     bg-slate-400 dark:bg-slate-700
