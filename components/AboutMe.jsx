@@ -50,7 +50,7 @@ export default function AboutMe() {
     I had a background in some programming languages such as JavaScript, Python, C++ and SQL, was easy for me to
     get comfortable with Solidity and Web interfaces.</p>
 
-    <p className="font-extralight">Since May 2021, there was no day without coding or researching. As well I started my own DeFi project:&nbsp;
+    <p className="font-extralight">Since May 2021, there was no day without coding or researching. As well, I started my own DeFi project:&nbsp;
     <a href="https://www.drivenecosystem.com/" target="_blank" className="underline">DRIVENecosystem</a>&nbsp; for which I am still working with my amazing team.</p>
 <p>But don't worry: I have enough time for your project too!</p>
 <br />
