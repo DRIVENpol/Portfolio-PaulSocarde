@@ -2,7 +2,7 @@ import { PlusSmIcon } from '@heroicons/react/solid'
 
 export default function HeroBanner() {
     return (
-    <div className="text-center
+    <div id="banner" className="text-center
     bg-slate-400 dark:bg-slate-700
     text-white px-5 py-5">
        <span className="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-red-100 text-red-800 ml-3 mt-10">

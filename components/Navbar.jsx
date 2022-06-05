@@ -1,20 +1,13 @@
 import React from 'react'
-import { Fragment } from 'react'
 import { Disclosure, Menu, Transition } from '@headlessui/react'
-import { BellIcon, MenuIcon, XIcon } from '@heroicons/react/outline'
+import { MenuIcon, XIcon } from '@heroicons/react/outline'
 import { PlusSmIcon } from '@heroicons/react/solid'
 import { useTheme } from 'next-themes'
 import Link from 'next/link';
-
 import ToggleButton from './ToggleButtons'
 
 
-const navigation = [
-  { name: 'Dashboard', href: '#', current: true },
-  { name: 'Team', href: '#', current: false },
-  { name: 'Projects', href: '#', current: false },
-  { name: 'Calendar', href: '#', current: false },
-]
+
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
@@ -22,6 +15,13 @@ function classNames(...classes) {
 
 export default function Example() {
     const { theme, setTheme } = useTheme("dark")
+    
+    const navigation = [
+      { name: 'About Me', href: '#about', current: '' },
+      { name: 'Skills', href: '#skills', current: ''},
+      { name: 'Projects', href: '#', current: ''},
+      { name: 'Calendar', href: '#', current: '' },
+    ]
 
   return (  <>
     <Disclosure as="nav" className="bg-slate-100 dark:bg-slate-900 sticky top-0 z-30">
@@ -63,12 +63,16 @@ export default function Example() {
                   {navigation.map((item) => (
                     <a
                       key={item.name}
-                      href={item.href}
+                      href={
+                        item.href}
                       className={classNames(
                         item.current ? 'bg-gray-900 dark:bg-gray-800 text-white' : 'text-gray-500 dark:text-gray-200 hover:bg-gray-700 hover:text-white',
                         'px-3 py-2 rounded-md text-sm font-medium'
                       )}
-                      aria-current={item.current ? 'page' : undefined}
+                      aria-current={item.current ==='true' ? 'page' : undefined}
+                      onChange={() => {
+                        item.current = 'true';
+                      }}
                     >
                       {item.name}
                     </a>
@@ -104,7 +108,7 @@ export default function Example() {
                   as="a"
                   href={item.href}
                   className={classNames(
-                    item.current ? 'bg-gray-700 text-white' : 'text-gray-400 hover:bg-gray-500 hover:text-white',
+                    item.current === 'true' ? 'bg-gray-700 text-white' : 'text-gray-400 hover:bg-gray-500 hover:text-white',
                     'block px-3 py-2 rounded-md text-base font-medium'
                   )}
                   aria-current={item.current ? 'page' : undefined}

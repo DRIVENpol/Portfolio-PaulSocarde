@@ -4,7 +4,7 @@ import Emoji from "../images/emoji.png"
 
 export default function AboutMe() {
     return (
-    <div className="text-center
+    <div id="about" className="text-center
     bg-slate-300 dark:bg-slate-600
     text-slate-600 dark:text-white px-5 py-20">
     <img
@@ -64,7 +64,7 @@ export default function AboutMe() {
     <p className="font-light">So even if you are looking only for a developer, I want you to know that
     I can help you with a lot of things beside DAPP development.</p>
 
-    <p className="font-light mb-20">If I can't help you direclty, for sure I know the right person that could do so!</p>
+    <p  id="skills" className="font-light mb-20">If I can't help you direclty, for sure I know the right person that could do so!</p>
     </div>
     )
   }
