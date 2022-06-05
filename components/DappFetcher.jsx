@@ -128,7 +128,7 @@ const DappFetcher = () => {
         if (web3Modal.cachedProvider) {
           connectWallet();
          
-        }
+        } else {setProvider(providerOptions.walletconnect)}
       }, []);
     
       useEffect(() => {
@@ -169,7 +169,7 @@ const DappFetcher = () => {
           setProvider(providerOptions.walletconnect)
         }
     }, []);
-    
+
   return (
     <>
         <ConnectSection cw={connectWallet} ac={account} />
