@@ -24,7 +24,7 @@ export default function Example() {
     const { theme, setTheme } = useTheme("dark")
 
   return (  <>
-    <Disclosure as="nav" className="bg-white dark:bg-slate-900 sticky top-0 z-30">
+    <Disclosure as="nav" className="bg-slate-100 dark:bg-slate-900 sticky top-0 z-30">
       {({ open }) => (
         <>
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -80,7 +80,9 @@ export default function Example() {
                   <button
                     type="button"
                     className="hidden md:flex relative items-center px-4 py-2 border border-transparent shadow-sm text-sm font-medium 
-                    rounded-md text-white bg-indigo-600 hover:bg-indigo-500 dark:bg-indigo-600 dark:hover:bg-indigo-500
+                    rounded-md text-white 
+                    bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl
+                  dark:focus:ring-blue-800
                     focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-indigo-500"
                   >
                     <PlusSmIcon className="-ml-1 mr-2 h-5 w-5" aria-hidden="true" />
@@ -114,7 +116,7 @@ export default function Example() {
             <button
                     type="button"
                     className="relative inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-sm font-medium 
-                    rounded-md text-white bg-indigo-600 hover:bg-indigo-500 dark:bg-indigo-600 dark:hover:bg-indigo-500
+                    rounded-md text-white  bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl
                     focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-indigo-500
                     ml-3 mb-10"
                   >
