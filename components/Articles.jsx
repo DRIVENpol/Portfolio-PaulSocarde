@@ -31,7 +31,7 @@ export default function Articles() {
      <p className="font-poppins mt-3 font-light">Sometimes I like to write - either tutorials, either documentation on a project that I create. </p>
     <div className="grid grid-cols-1 gap-2 sm:grid-cols-2 lg:grid-cols-3 mt-10">
     {articles.map((article, i) => (
-        <Article id={i} t={article.title} d={article.description} l={article.link} i={article.image} />
+        <Article key={i} t={article.title} d={article.description} l={article.link} i={article.image} />
     ))}
     </div>
     </div>
