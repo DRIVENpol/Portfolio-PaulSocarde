@@ -9,7 +9,7 @@ const ConnectSection = (props) => {
     {props.ac ? (
         <>
         <p className="text-3xl font-poppins mt-5 font-semibold">🎉 Congrats!</p>
-        <p className="text-xl font-poppins mt-5 font-normal">You are now connected: {props.ac} </p>
+        <p className="text-xl font-poppins mt-5 font-normal">You are connected: {props.ac} </p>
         </>
     ):(<>
         <p className="text-3xl font-poppins mt-5 font-semibold">Step 1: Connect your wallet</p>
