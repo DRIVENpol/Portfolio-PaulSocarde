@@ -47,7 +47,7 @@ export default function AboutMe() {
     technology behind blockchain (especially Web3). </p>
     
     <p className="font-extralight">Wasn't an easy step but not as hard as I thought: as 
-    I had a background in some programming languages as JavaScript, Python, C++ and SQL, was easy for me to
+    I had a background in some programming languages such as JavaScript, Python, C++ and SQL, was easy for me to
     get comfortable with Solidity and Web interfaces.</p>
 
     <p className="font-extralight">Since May 2021, there was no day without coding or researching. As well I started my own DeFi project:&nbsp;
