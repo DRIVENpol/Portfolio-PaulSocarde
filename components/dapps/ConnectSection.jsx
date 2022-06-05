@@ -6,8 +6,13 @@ const ConnectSection = (props) => {
         <div id="about" className="text-center
     bg-slate-300 dark:bg-slate-600
     text-slate-600 dark:text-white px-5 py-20">
-    
-    <p className="text-3xl font-poppins mt-5 font-semibold">Step 1: Connect your wallet</p>
+    {props.ac ? (
+        <>
+        <p className="text-3xl font-poppins mt-5 font-semibold">🎉 Congrats!</p>
+        <p className="text-xl font-poppins mt-5 font-normal">You are now connected: {props.ac} </p>
+        </>
+    ):(<>
+        <p className="text-3xl font-poppins mt-5 font-semibold">Step 1: Connect your wallet</p>
     <button         onClick={props.cw}
                     type="button"
                     className="relative inline-flex items-center px-8 py-4 border border-transparent shadow-sm text-sm font-medium 
@@ -15,8 +20,10 @@ const ConnectSection = (props) => {
                     focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-indigo-500
                     ml-3 my-10"
                   >
-                    Connect your wallet
+                    <span>Connect your wallet</span>
                   </button>
+    </>)}
+   
     </div>
     </>
   )

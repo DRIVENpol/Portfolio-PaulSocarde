@@ -19,7 +19,6 @@ const DappFetcher = () => {
     const [signedMessage, setSignedMessage] = useState("");
     const [verified, setVerified] = useState();
 
-console.log(account)
     const connectWallet = async () => {
         if (typeof window !== 'undefined'){
           try {
@@ -173,7 +172,7 @@ console.log(account)
     }, []);
   return (
     <>
-        <ConnectSection cw={connectWallet} />
+        <ConnectSection cw={connectWallet} ac={account} />
     </>
   )
 }
