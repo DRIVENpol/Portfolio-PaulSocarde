@@ -52,7 +52,7 @@ export default function AboutMe() {
 
     <p className="font-extralight">Since May 2021, there was no day without coding or researching. As well, I started my own DeFi project:&nbsp;
     <a href="https://www.drivenecosystem.com/" target="_blank" className="underline">DRIVENecosystem</a>&nbsp; for which I am still working with my amazing team.</p>
-<p>But don't worry: I have enough time for your project too!</p>
+<p>But don't worry: I have more than enough time for your project too!</p>
 <br />
     <p className="text-3xl font-poppins mt-5 font-semibold mt-10">How could I be a good choice for your project?</p>
     <p className="font-light mt-2">To be a project owner is not easy: programming skills are not enough.
@@ -64,7 +64,7 @@ export default function AboutMe() {
     <p className="font-light">So even if you are looking only for a developer, I want you to know that
     I can help you with a lot of things beside DAPP development.</p>
 
-    <p  id="skills" className="font-light mb-20">If I can't help you direclty, for sure I know the right person that could do so!</p>
+    <p  id="skills" className="font-light mb-20">If I can't help you directly, for sure I know the right person that could do it!</p>
     </div>
     )
   }
