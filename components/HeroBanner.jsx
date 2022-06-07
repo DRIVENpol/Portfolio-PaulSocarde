@@ -4,7 +4,7 @@ import Background from '../images/bg.png'
 
 export default function HeroBanner(props) {
     return (
-    <div style={{backgroundImage: "url(/static/media" + {Background} + ")"}} >
+    <div style={{backgroundImage: "url(/images/" + {Background} + ")"}} >
     <div id="banner" className="text-center
     text-white px-5 py-5">
        <span className="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-green-100 text-green-800 ml-3 mt-10">
