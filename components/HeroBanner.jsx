@@ -4,8 +4,7 @@ import Background from '../images/bg.png'
 
 export default function HeroBanner(props) {
     return (
-    <div style={{backgroundImage: "url(https://i.imgur.com/m8gpA9n.jpeg)"}} 
-    className="bg-cover">
+    <div className="bg-gradient-to-r from-gray-700 via-gray-900 to-black">
     <div id="banner" className="text-center
     text-white px-5 py-5">
        <span className="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-green-100 text-green-800 ml-3 mt-10">
@@ -21,7 +20,7 @@ export default function HeroBanner(props) {
 
     <button
                     type="button"
-                    className="relative mb-20 inline-flex items-center 
+                    className="relative mb-20 inline-flex items-center
                     px-8 py-3 border border-transparent shadow-sm text-sm 
                     font-medium rounded-md text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:outline-none focus:ring-2 
                     focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-indigo-500
