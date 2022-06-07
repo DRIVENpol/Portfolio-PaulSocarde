@@ -2,9 +2,8 @@ import { PlusSmIcon } from '@heroicons/react/solid'
 
 
 export default function HeroBanner(props) {
-    return (
+    return (<div className="bg-[url('../images/planets.png')] bg-cover">
     <div id="banner" className="text-center
-    bg-[url('../images/planet.png')] bg-cover
     text-white px-5 py-5">
        <span className="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-green-100 text-green-800 ml-3 mt-10">
         <svg className="mr-1.5 h-2 w-2 text-green-400" fill="currentColor" viewBox="0 0 8 8">
@@ -29,6 +28,6 @@ export default function HeroBanner(props) {
                   {props.isDapp ? (<><span>◀️ Back To Homepage</span></>) : (<> <span>DAPPs Page</span></>)}
                    
     </button>
-    </div>
+    </div></div>
     )
   }
