@@ -13,14 +13,14 @@ const CreateERC20 = (props) => {
      <div></div>
      
      <div>
-            <label for="first_name" class="block mb-2 text-sm font-medium text-white">Token Name</label>
+            <label htmlFor="first_name" class="block mb-2 text-sm font-medium text-white">Token Name</label>
             <input type="text" id="first_name" class="bg-gray-50 border border-gray-300 
             text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block 
             w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 
             dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Shiba Inu" required />
         </div>
         <div>
-            <label for="last_name" class="block mb-2 text-sm font-medium text-white">Token Symbol</label>
+            <label htmlFor="last_name" class="block mb-2 text-sm font-medium text-white">Token Symbol</label>
             <input type="text" id="last_name" class="bg-gray-50 border border-gray-300 
             text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 
             block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 
@@ -28,14 +28,14 @@ const CreateERC20 = (props) => {
         </div>
 
         <div>
-            <label for="first_name" class="block mb-2 text-sm font-medium text-white">Initial Supply</label>
+            <label htmlFor="first_name" class="block mb-2 text-sm font-medium text-white">Initial Supply</label>
             <input type="text" id="first_name" class="bg-gray-50 border border-gray-300 
             text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block 
             w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 
             dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="1000" required />
         </div>
         <div>
-            <label for="last_name" class="block mb-2 text-sm font-medium text-white">Burn Fee</label>
+            <label htmlFor="last_name" class="block mb-2 text-sm font-medium text-white">Burn Fee</label>
             <input type="text" id="last_name" class="bg-gray-50 border border-gray-300 
             text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 
             block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 
