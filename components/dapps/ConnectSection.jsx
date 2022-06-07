@@ -12,7 +12,7 @@ const ConnectSection = (props) => {
         <p className="text-xl font-poppins mt-5 font-normal">You are connected: {props.ac} </p>
         </>
     ):(<>
-        <p className="text-3xl font-poppins mt-5 font-semibold">Step 1: Connect your wallet</p>
+        <p className="text-3xl font-poppins mt-5 font-semibold">Connect your wallet</p>
     <button         onClick={props.cw}
                     type="button"
                     className="relative inline-flex items-center px-8 py-4 border border-transparent shadow-sm text-sm font-medium 

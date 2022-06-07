@@ -6,6 +6,10 @@ import Web3Modal from "web3modal";
 import { providerOptions } from "./dapps/Utils/providerOptions";
 
 import ConnectSection from './dapps/ConnectSection'
+import CreateERC20 from './dapps/CreateERC20';
+import NftCollection from './dapps/NFTcollection';
+import TokenLocker from './dapps/TokenLocker'
+import Stake from './dapps/Stake';
 
 const DappFetcher = () => {
     const [provider, setProvider] = useState();
@@ -173,6 +177,10 @@ const DappFetcher = () => {
   return (
     <>
         <ConnectSection cw={connectWallet} ac={account} />
+        <CreateERC20 ac={account} />
+        <NftCollection ac={account} />
+        <TokenLocker ac={account} />
+        <Stake ac={account} />
     </>
   )
 }

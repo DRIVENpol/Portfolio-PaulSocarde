@@ -25,7 +25,7 @@ export default function HeroBanner(props) {
                     "
                     onClick={props.changeContent}
                   >
-                  {props.isDapp ? (<><span>Back To Homepage</span></>) : (<> <span>DAPPs Page</span></>)}
+                  {props.isDapp ? (<><span>◀️ Back To Homepage</span></>) : (<> <span>DAPPs Page</span></>)}
                    
     </button>
     </div>
