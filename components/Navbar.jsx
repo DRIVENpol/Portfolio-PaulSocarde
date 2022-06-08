@@ -14,8 +14,9 @@ function classNames(...classes) {
 }
 
 export default function Navbar() {
-    const { theme, setTheme } = useTheme("dark")
-    
+    const { theme, setTheme } = useTheme()
+
+
     const navigation = [
       { name: 'About Me', href: '#about', current: '' },
       { name: 'Skills', href: '#skills', current: ''},
