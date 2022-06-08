@@ -27,7 +27,14 @@ const DappFetcher = () => {
     const [tokenSymbol, setTokenSy] = useState('');
     const [tokenSupply, setTokenSu] = useState();
 
+    const [loading, setIsLoading] = useState(false);
+
     const [isNotif, setIsNotif] = useState(false);
+    const [transaction, setTransaction] = useState("");
+
+    function sleep(ms) {
+      return new Promise(resolve => setTimeout(resolve, ms));
+  }
 
     const manipulateNotif = async() => {
       setIsNotif(true);
@@ -42,11 +49,6 @@ const DappFetcher = () => {
       setTokenSy(data2);
       setTokenSu(data3);
     }
-
-    console.log("[DappFetcher.js] Name: " + tokenName);
-    console.log("[DappFetcher.js] Symbol: " + tokenSymbol);
-    console.log("[DappFetcher.js] Supply: " + tokenSupply);
-    console.log("[DappFetcher.js] Account: " + account);
 
     const createErc20 = async () => {
       if (typeof window !== 'undefined'){
@@ -64,7 +66,9 @@ const DappFetcher = () => {
   
   
           let _createERC20 = await connectedContract.createToken(tokenName, tokenSymbol, tokenSupply, {gasLimit:6000000});
+          setIsLoading(true);
           await _createERC20.wait();
+          setIsLoading(false);
           manipulateNotif();
 
   
@@ -234,7 +238,7 @@ const DappFetcher = () => {
   return (
     <>
         <ConnectSection cw={connectWallet} ac={account} />
-        <CreateERC20 ac={account} pd={pull_data} c={createErc20} />
+        <CreateERC20 ac={account} pd={pull_data} c={createErc20} il={loading} tx={transaction} in={isNotif} err={isError.message} />
         <NftCollection ac={account} />
         <TokenLocker ac={account} />
         <Stake ac={account} />
