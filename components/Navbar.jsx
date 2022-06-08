@@ -23,7 +23,7 @@ export default function Navbar() {
     ]
 
   return (  <>
-    <Disclosure as="nav" className="bg-slate-100 dark:bg-slate-900 sticky top-0 z-30">
+    <Disclosure as="nav" className="bg-slate-100 dark:bg-slate-900 dark:border-b dark:border-slate-500 sticky top-0 z-30">
       {({ open }) => (
         <>
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
