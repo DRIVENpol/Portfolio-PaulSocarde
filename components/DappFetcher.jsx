@@ -23,6 +23,57 @@ const DappFetcher = () => {
     const [signedMessage, setSignedMessage] = useState("");
     const [verified, setVerified] = useState();
 
+    const [tokenName, setTokenN] = useState('');
+    const [tokenSymbol, setTokenSy] = useState('');
+    const [tokenSupply, setTokenSu] = useState();
+
+    const erc20Factory = "0x778E1337F8B05B3A69551a01f03004a9D3118a27";
+
+    const pull_data = (data1, data2, data3) => {
+      setTokenN(data1);
+      setTokenSy(data2);
+      setTokenSu(data3);
+    }
+
+    console.log("[DappFetcher.js] Name: " + tokenName);
+    console.log("[DappFetcher.js] Symbol: " + tokenSymbol);
+    console.log("[DappFetcher.js] Supply: " + tokenSupply);
+    console.log("[DappFetcher.js] Account: " + account);
+
+    const createErc20 = async () => {
+      if (typeof window !== 'undefined'){
+        try {
+          
+          const { ethereum } = window;
+          const provider = new ethers.providers.Web3Provider(ethereum);
+          const signer = provider.getSigner();
+  
+          setProvider(provider);
+          setLibrary(library);
+  
+          const abi = ["function createToken(string memory _name, string memory _symbol, uint256 _supply) public"]
+          const connectedContract = new ethers.Contract(erc20Factory, abi, signer);
+  
+  
+          let _createERC20 = await connectedContract.createToken(_tokenName, _tokenSymbol, _tokenSupply, {gasLimit:6000000});
+          setIsLoading(true);
+          await _createERC20.wait();
+          // manipulateNotif();
+          // getMintedNft();
+          setIsLoading(false);
+  
+          console.log(_createERC20);
+          console.log(`Mined, see transaction: https://rinkeby.etherscan.io/tx/${_createERC20.hash}`);
+          setTransaction(`https://rinkeby.etherscan.io/tx/${_createERC20.hash}`);
+  
+  
+        } catch (error) {
+          setError(error);
+        }
+      }
+     
+    };
+
     const connectWallet = async () => {
         if (typeof window !== 'undefined'){
           try {
@@ -177,7 +228,7 @@ const DappFetcher = () => {
   return (
     <>
         <ConnectSection cw={connectWallet} ac={account} />
-        <CreateERC20 ac={account} />
+        <CreateERC20 ac={account} pd={pull_data} c={createErc20} />
         <NftCollection ac={account} />
         <TokenLocker ac={account} />
         <Stake ac={account} />

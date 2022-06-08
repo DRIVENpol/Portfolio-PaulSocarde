@@ -1,6 +1,25 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 const CreateERC20 = (props) => {
+    const [tokenName, setTokenName] = useState('');
+    const [tokenSymbol, setTokenSymbol] = useState('');
+    const [tokenSupply, setTokenSupply] = useState();
+
+    const nameChangeHandler = (event) => {
+        setTokenName(event.target.value);
+    }
+
+    const symbolChangeHandler = (event) => {
+        setTokenSymbol(event.target.value);
+    }
+
+    const supplyChangeHandler = (event) => {
+        setTokenSupply(event.target.value);
+    }
+
+    props.pd(tokenName, tokenSymbol, tokenSupply);
+
+
   return (
    <><div className="bg-slate-400 dark:bg-slate-700 px-20 py-20">
 
@@ -17,14 +36,18 @@ const CreateERC20 = (props) => {
             <input type="text" id="first_name" className="bg-gray-50 border border-gray-300 
             text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block 
             w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 
-            dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Shiba Inu" required />
+            dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Shiba Inu" required 
+            onChange={nameChangeHandler}
+            />
         </div>
         <div>
             <label htmlFor="last_name" className="block mb-2 text-sm font-medium text-white">Token Symbol</label>
             <input type="text" id="last_name" className="bg-gray-50 border border-gray-300 
             text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 
             block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 
-            dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="$SINU" required />
+            dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="$SINU" required 
+                onChange={symbolChangeHandler}
+            />
         </div>
 
         <div>
@@ -32,24 +55,21 @@ const CreateERC20 = (props) => {
             <input type="text" id="first_name" className="bg-gray-50 border border-gray-300 
             text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block 
             w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 
-            dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="1000" required />
-        </div>
-        <div>
-            <label htmlFor="last_name" className="block mb-2 text-sm font-medium text-white">Burn Fee</label>
-            <input type="text" id="last_name" className="bg-gray-50 border border-gray-300 
-            text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 
-            block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 
-            dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="4" required />
+            dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="1000" required 
+                onChange={supplyChangeHandler}
+            />
         </div>
 
+<div></div>
     <div>
-       {props.acc ? ( <button
+       {props.ac ? ( <button
                     type="button"
                     className="relative inline-flex items-center 
                     px-8 py-3 border border-transparent shadow-sm text-sm 
                     font-medium rounded-md text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:outline-none focus:ring-2 
                     focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-indigo-500
                     "
+                    onClick={props.c}
                   >
                 <span>Deploy</span>
                    
