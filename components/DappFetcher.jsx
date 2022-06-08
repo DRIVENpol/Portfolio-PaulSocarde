@@ -27,6 +27,14 @@ const DappFetcher = () => {
     const [tokenSymbol, setTokenSy] = useState('');
     const [tokenSupply, setTokenSu] = useState();
 
+    const [isNotif, setIsNotif] = useState(false);
+
+    const manipulateNotif = async() => {
+      setIsNotif(true);
+      await sleep(50000);
+      setIsNotif(false);
+  }
+
     const erc20Factory = "0x778E1337F8B05B3A69551a01f03004a9D3118a27";
 
     const pull_data = (data1, data2, data3) => {
@@ -55,12 +63,10 @@ const DappFetcher = () => {
           const connectedContract = new ethers.Contract(erc20Factory, abi, signer);
   
   
-          let _createERC20 = await connectedContract.createToken(_tokenName, _tokenSymbol, _tokenSupply, {gasLimit:6000000});
-          setIsLoading(true);
+          let _createERC20 = await connectedContract.createToken(tokenName, tokenSymbol, tokenSupply, {gasLimit:6000000});
           await _createERC20.wait();
-          // manipulateNotif();
-          // getMintedNft();
-          setIsLoading(false);
+          manipulateNotif();
+
   
           console.log(_createERC20);
           console.log(`Mined, see transaction: https://rinkeby.etherscan.io/tx/${_createERC20.hash}`);
