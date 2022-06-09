@@ -9,7 +9,6 @@ const NFTCollection = (props) => {
     const [tokenName, setTokenName] = useState('');
     const [tokenSymbol, setTokenSymbol] = useState('');
     const [tokenSupply, setTokenSupply] = useState();
-    const [mktWallet, setMktWallet] = useState('');
     const [tokenUri, setTokenUri] = useState('');
     const [price, setPrice] = useState();
 
