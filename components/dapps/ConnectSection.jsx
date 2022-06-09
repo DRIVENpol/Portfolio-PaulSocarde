@@ -8,13 +8,28 @@ const ConnectSection = (props) => {
     bg-slate-300 dark:bg-slate-600
     text-slate-600 dark:text-white px-5 py-20">
 <center>
-<div className="rounded-md bg-blue-50 p-4 max-w-2xl">
+<div className="rounded-md bg-blue-50 p-4 max-w-2xl mb-2">
       <div className="flex">
         <div className="flex-shrink-0">
           <InformationCircleIcon className="h-5 w-5 text-blue-400" aria-hidden="true" />
         </div>
         <div className="ml-3 flex-1 md:flex md:justify-between">
           <p className="text-sm text-blue-700"><b>Note:</b> For your safety, please don't use your main wallet! Create a brand-new one!</p>
+          <p className="mt-3 text-sm md:mt-0 md:ml-6">
+            
+          </p>
+        </div>
+      </div>
+    </div></center>
+
+    <center>
+<div className="rounded-md bg-blue-50 p-4 max-w-2xl mb-20">
+      <div className="flex">
+        <div className="flex-shrink-0">
+          <InformationCircleIcon className="h-5 w-5 text-blue-400" aria-hidden="true" />
+        </div>
+        <div className="ml-3 flex-1 md:flex md:justify-between">
+          <p className="text-sm text-blue-700"><b>Note:</b> Connect to Rinkeby Testnet and get some Ethers from faucet in order to play with every component.</p>
           <p className="mt-3 text-sm md:mt-0 md:ml-6">
             
           </p>
