@@ -12,43 +12,115 @@ import TokenLocker from './dapps/TokenLocker'
 import Stake from './dapps/Stake';
 
 const DappFetcher = () => {
+    // Wallet Connect
     const [provider, setProvider] = useState();
     const [library, setLibrary] = useState();
     const [account, setAccount] = useState();
     const [signature, setSignature] = useState("");
     const [isError, setError] = useState("");
+    const [isErrorNft, setErrorNft] = useState("");
     const [chainId, setChainId] = useState();
     const [network, setNetwork] = useState();
     const [message, setMessage] = useState("");
     const [signedMessage, setSignedMessage] = useState("");
     const [verified, setVerified] = useState();
 
+    // ERC20
     const [tokenName, setTokenN] = useState('');
     const [tokenSymbol, setTokenSy] = useState('');
     const [tokenSupply, setTokenSu] = useState();
 
-    const [loading, setIsLoading] = useState(false);
+    // NFTs
+    const [_tokenName, setTokenName] = useState('');
+    const [_tokenSymbol, setTokenSymbol] = useState('');
+    const [_tokenSupply, setTokenSupply] = useState();
+    const [_tokenUri, setTokenUri] = useState('');
+    const [_price, setPrice] = useState();
 
+    // Loading states
+    const [loading, setIsLoading] = useState(false);
+    const [loadingNft, setIsLoadingNft] = useState(false);
+
+    // Notifications & Transactions
     const [isNotif, setIsNotif] = useState(false);
     const [transaction, setTransaction] = useState("");
 
+    const [isNotifNft, setIsNotifNft] = useState(false);
+    const [transactionNft, setTransactionNft] = useState("");
+
+    // Delay
     function sleep(ms) {
       return new Promise(resolve => setTimeout(resolve, ms));
   }
 
+    // Manipulate notifications
     const manipulateNotif = async() => {
       setIsNotif(true);
       await sleep(50000);
       setIsNotif(false);
   }
 
-    const erc20Factory = "0x778E1337F8B05B3A69551a01f03004a9D3118a27";
+  const manipulateNotifNft = async() => {
+    setIsNotifNft(true);
+    await sleep(50000);
+    setIsNotifNft(false);
+}
 
+  
+
+    // Smart Contracts
+    const erc20Factory = "0x778E1337F8B05B3A69551a01f03004a9D3118a27";
+    const nftFactory = "0xa3da4CD2AC9b7cda810407d4B9a8caa09bEFE50e";
+
+    // Pull data from child to parent
     const pull_data = (data1, data2, data3) => {
       setTokenN(data1);
       setTokenSy(data2);
       setTokenSu(data3);
     }
+
+    // Pull data from child to parent
+    const pull_dataNft = (data1, data2, data3, data5, data6) => {
+      setTokenName(data1);
+      setTokenSymbol(data2);
+      setTokenSupply(data3);
+      setTokenUri(data5);
+      setPrice(data6);
+    }
+
+    const createNft = async () => {
+      if (typeof window !== 'undefined'){
+        try {
+          
+          const { ethereum } = window;
+          const provider = new ethers.providers.Web3Provider(ethereum);
+          const signer = provider.getSigner();
+  
+          setProvider(provider);
+          setLibrary(library);
+  
+          const abi = ["function deployCollection(string memory _name, string memory _symbol, string memory _tokenURI, uint256 _price, uint256 _totalSupply) public"]
+          const connectedContract = new ethers.Contract(nftFactory, abi, signer);
+  
+  
+          let _createNft = await connectedContract.deployCollection(_tokenName, _tokenSymbol, _tokenUri, _price, _tokenSupply, {gasLimit:6000000});
+          setIsLoadingNft(true);
+          await _createNft.wait();
+          setIsLoadingNft(false);
+          manipulateNotifNft();
+
+  
+          console.log(_createNft);
+          console.log(`Mined, see transaction: https://rinkeby.etherscan.io/tx/${_createNft.hash}`);
+          setTransactionNft(`https://rinkeby.etherscan.io/tx/${_createNft.hash}`);
+  
+  
+        } catch (error) {
+          setErrorNft(error);
+        }
+      }
+     
+    };
 
     const createErc20 = async () => {
       if (typeof window !== 'undefined'){
@@ -239,7 +311,7 @@ const DappFetcher = () => {
     <>
         <ConnectSection cw={connectWallet} ac={account} />
         <CreateERC20 ac={account} pd={pull_data} c={createErc20} il={loading} tx={transaction} in={isNotif} err={isError.message} />
-        <NftCollection ac={account} />
+        <NftCollection ac={account} pd={pull_dataNft} c={createNft} il={loadingNft} tx={transactionNft} in={isNotifNft} err={isErrorNft.message} />
         <TokenLocker ac={account} />
         <Stake ac={account} />
     </>

@@ -2,7 +2,7 @@ import React from 'react'
 
 const Stake = (props) => {
   return (
-   <><div className=" bg-slate-300 dark:bg-slate-600
+   <><div className="bg-slate-300 dark:bg-slate-600
    text-slate-600 dark:text-white px-20 py-20">
 
     <form>
