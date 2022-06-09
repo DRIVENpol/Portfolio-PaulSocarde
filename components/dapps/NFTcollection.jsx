@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 
 import { CheckCircleIcon } from '@heroicons/react/solid'
 import { XCircleIcon } from '@heroicons/react/solid'
@@ -33,7 +33,11 @@ const NFTCollection = (props) => {
         setPrice(event.target.value);
     }
 
-    props.pd(tokenName, tokenSymbol, tokenSupply, tokenUri, price);
+
+    useEffect(() => {
+      props.pd(tokenName, tokenSymbol, tokenSupply, tokenUri, price);
+    
+    }, [])
 
 
   return (

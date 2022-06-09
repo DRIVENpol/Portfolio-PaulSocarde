@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 
 import { CheckCircleIcon } from '@heroicons/react/solid'
 import { XCircleIcon } from '@heroicons/react/solid'
@@ -21,7 +21,11 @@ const CreateERC20 = (props) => {
         setTokenSupply(event.target.value);
     }
 
+  useEffect(() => {
     props.pd(tokenName, tokenSymbol, tokenSupply);
+  
+  }, [])
+  
 
 
   return (
