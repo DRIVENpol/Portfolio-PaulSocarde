@@ -18,6 +18,7 @@ const DappFetcher = () => {
     const [account, setAccount] = useState();
     const [signature, setSignature] = useState("");
     const [isError, setError] = useState("");
+    const [isErrorErc, setErrorErc] = useState("");
     const [isErrorNft, setErrorNft] = useState("");
     const [chainId, setChainId] = useState();
     const [network, setNetwork] = useState();
@@ -70,7 +71,7 @@ const DappFetcher = () => {
 
     // Smart Contracts
     const erc20Factory = "0x778E1337F8B05B3A69551a01f03004a9D3118a27";
-    const nftFactory = "0xa3da4CD2AC9b7cda810407d4B9a8caa09bEFE50e";
+    const nftFactory = "0xd038BE62C33286f946AD66B9Bc613e28F863389f";
 
     // Pull data from child to parent
     const pull_data = (data1, data2, data3) => {
@@ -150,7 +151,7 @@ const DappFetcher = () => {
   
   
         } catch (error) {
-          setError(error);
+          setErrorErc(error);
         }
       }
      
@@ -310,7 +311,7 @@ const DappFetcher = () => {
   return (
     <>
         <ConnectSection cw={connectWallet} ac={account} />
-        <CreateERC20 ac={account} pd={pull_data} c={createErc20} il={loading} tx={transaction} in={isNotif} err={isError.message} />
+        <CreateERC20 ac={account} pd={pull_data} c={createErc20} il={loading} tx={transaction} in={isNotif} err={isErrorErc.message} />
         <NftCollection ac={account} pd={pull_dataNft} c={createNft} il={loadingNft} tx={transactionNft} in={isNotifNft} err={isErrorNft.message} />
         <TokenLocker ac={account} />
         <Stake ac={account} />
