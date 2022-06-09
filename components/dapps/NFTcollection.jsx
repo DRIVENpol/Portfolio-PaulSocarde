@@ -44,7 +44,7 @@ const NFTCollection = (props) => {
     <form>
     <div className="grid gap-6 lg:grid-cols-2">
      <div>
-        <p className="text-3xl text-white font-poppins pt-5 font-semibold">Create an NFT collection!</p>
+        <p className="text-3xl font-poppins pt-5 font-semibold">Create an NFT collection!</p>
      </div>
      
      <div></div>
