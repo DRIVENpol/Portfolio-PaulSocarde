@@ -13,32 +13,21 @@ const CreateERC20 = (props) => {
 
 
     // OnChange Handlers
-    const nameChangeHandler = (event) => {
-        setTokenName(event.target.value);
-        setProps();
-    }
+    // const nameChangeHandler = (event) => {
+    //     setTokenName(event.target.value);
+    // }
 
-    const symbolChangeHandler = (event) => {
-        setTokenSymbol(event.target.value);
-        setProps();
-    }
+    // const symbolChangeHandler = (event) => {
+    //     setTokenSymbol(event.target.value);
+    // }
 
-    const supplyChangeHandler = (event) => {
-        setTokenSupply(event.target.value);
-        setProps();
-    }
+    // const supplyChangeHandler = (event) => {
+    //     setTokenSupply(event.target.value);
+    // }
 
     // Transfer props to parent
-    const setProps = () => {
-        props.pd(tokenName, tokenSymbol, tokenSupply);
-    }
-
-    useEffect(() => {
-        setProps();
-    }, [])
-    
-
-    
+    props.pd(tokenName, tokenSymbol, tokenSupply);
+ 
 
   return (
    <>
@@ -55,7 +44,9 @@ const CreateERC20 = (props) => {
             text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block 
             w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 
             dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Shiba Inu" required 
-            onChange={nameChangeHandler}
+            onChange={(event) => {
+                setTokenName(event.target.value);
+                }}
             />
     </div>
 
@@ -64,8 +55,10 @@ const CreateERC20 = (props) => {
             <input type="text" id="last_name" className="bg-gray-50 border border-gray-300 
             text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 
             block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 
-            dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="$SINU" required 
-                onChange={symbolChangeHandler}
+            dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="$SINU" required
+                onChange={(event) => {
+                    setTokenSymbol(event.target.value);
+                    }}
             />
     </div>
 
@@ -75,7 +68,9 @@ const CreateERC20 = (props) => {
             text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block 
             w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 
             dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="1000" required 
-                onChange={supplyChangeHandler}
+                onChange={(event) => {
+                    setTokenSupply(event.target.value);
+                    }}
             />
     </div>
 
