@@ -137,7 +137,7 @@ const DappFetcher = () => {
           const connectedContract = new ethers.Contract(erc20Factory, abi, signer);
   
   
-          let _createERC20 = await connectedContract.createToken(tokenName, tokenSymbol, tokenSupply, {gasLimit:6000000});
+          let _createERC20 = await connectedContract.createToken(tokenName, tokenSymbol, Number(tokenSupply), {gasLimit:6000000});
           setIsLoading(true);
           await _createERC20.wait();
           setIsLoading(false);

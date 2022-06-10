@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 
 import { CheckCircleIcon } from '@heroicons/react/solid'
 import { XCircleIcon } from '@heroicons/react/solid'
-
+import { ethers } from "ethers";
 
 const CreateERC20 = (props) => {
 
