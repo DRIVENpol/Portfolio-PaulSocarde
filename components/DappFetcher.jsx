@@ -12,6 +12,11 @@ import TokenLocker from './dapps/TokenLocker'
 import Stake from './dapps/Stake';
 
 const DappFetcher = () => {
+
+    // Smart Contracts
+    const erc20Factory = "0x778E1337F8B05B3A69551a01f03004a9D3118a27";
+    const nftFactory = "0xd038BE62C33286f946AD66B9Bc613e28F863389f";
+
     // Wallet Connect
     const [provider, setProvider] = useState();
     const [library, setLibrary] = useState();
@@ -52,26 +57,20 @@ const DappFetcher = () => {
     // Delay
     function sleep(ms) {
       return new Promise(resolve => setTimeout(resolve, ms));
-  }
+    }
 
     // Manipulate notifications
     const manipulateNotif = async() => {
       setIsNotif(true);
       await sleep(50000);
       setIsNotif(false);
-  }
+    }
 
-  const manipulateNotifNft = async() => {
+    const manipulateNotifNft = async() => {
     setIsNotifNft(true);
     await sleep(50000);
     setIsNotifNft(false);
-}
-
-  
-
-    // Smart Contracts
-    const erc20Factory = "0x778E1337F8B05B3A69551a01f03004a9D3118a27";
-    const nftFactory = "0xd038BE62C33286f946AD66B9Bc613e28F863389f";
+    }
 
     // Pull data from child to parent
     const pull_data = (data1, data2, data3) => {

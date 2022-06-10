@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 
 import { CheckCircleIcon } from '@heroicons/react/solid'
 import { XCircleIcon } from '@heroicons/react/solid'
@@ -15,23 +15,25 @@ const CreateERC20 = (props) => {
     // OnChange Handlers
     const nameChangeHandler = (event) => {
         setTokenName(event.target.value);
-        setProps();
     }
 
     const symbolChangeHandler = (event) => {
         setTokenSymbol(event.target.value);
-        setProps();
     }
 
     const supplyChangeHandler = (event) => {
         setTokenSupply(event.target.value);
-        setProps();
     }
 
     // Transfer props to parent
     const setProps = () => {
-        props.pd(tokenName, tokenSymbol, tokenSupply);
+        props.pd(tokenName, tokenSymbol, Number(tokenSupply));
     }
+
+    useEffect(() => {
+     setProps();
+    }, [])
+    
 
   return (
    <>
