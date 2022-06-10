@@ -80,12 +80,12 @@ const DappFetcher = () => {
     }
 
     // Pull data from child to parent
-    const pull_dataNft = (data1, data2, data3, data5, data6) => {
+    const pull_dataNft = (data1, data2, data3, data4, data5) => {
       setTokenName(data1);
       setTokenSymbol(data2);
       setTokenSupply(data3);
-      setTokenUri(data5);
-      setPrice(data6);
+      setTokenUri(data4);
+      setPrice(data5);
     }
 
     const createNft = async () => {
