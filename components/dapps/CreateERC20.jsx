@@ -1,45 +1,31 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 
 import { CheckCircleIcon } from '@heroicons/react/solid'
 import { XCircleIcon } from '@heroicons/react/solid'
 
 
 const CreateERC20 = (props) => {
-
-    const [tokenDetails, setTokenDetails] = useState({
-        tokenName: '',
-        tokenSymbol: '',
-        tokenSupply: 0
-    });
+    const [tokenName, setTokenName] = useState('');
+    const [tokenSymbol, setTokenSymbol] = useState('');
+    const [tokenSupply, setTokenSupply] = useState();
 
     const nameChangeHandler = (event) => {
-        setTokenDetails((prevState) => {
-        return {...prevState, tokenName: event.target.value}
-    });
+        setTokenName(event.target.value);
     }
 
     const symbolChangeHandler = (event) => {
-        setTokenDetails((prevState) => {
-            return {...prevState, tokenSymbol: event.target.value}
-        });
+        setTokenSymbol(event.target.value);
     }
 
     const supplyChangeHandler = (event) => {
-        setTokenDetails((prevState) => {
-            return {...prevState, tokenSupply: event.target.value}
-        });
+        setTokenSupply(event.target.value);
     }
 
-  useEffect(() => {
-    props.pd(tokenDetails.tokenName, tokenDetails.tokenSymbol, tokenDetails.tokenSupply);
-  
-  }, [])
-  
+    props.pd(tokenName, tokenSymbol, tokenSupply);
 
 
   return (
-   <>
-   <div className="bg-slate-400 dark:bg-slate-700 px-20 py-20">
+   <><div className="bg-slate-400 dark:bg-slate-700 px-20 py-20">
 
     <form>
     <div className="grid gap-6 lg:grid-cols-2">
