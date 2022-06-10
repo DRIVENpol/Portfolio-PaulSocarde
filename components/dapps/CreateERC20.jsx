@@ -9,7 +9,7 @@ const CreateERC20 = (props) => {
     // Token details
     const [tokenName, setTokenName] = useState('');
     const [tokenSymbol, setTokenSymbol] = useState('');
-    const [tokenSupply, setTokenSupply] = useState();
+    const [tokenSupply, setTokenSupply] = useState(0);
 
 
     // OnChange Handlers
