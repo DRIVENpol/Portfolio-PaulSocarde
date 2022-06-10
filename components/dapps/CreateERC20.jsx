@@ -27,7 +27,7 @@ const CreateERC20 = (props) => {
 
     // Transfer props to parent
     const setProps = () => {
-        props.pd(tokenName, tokenSymbol, Number(tokenSupply));
+        props.pd(tokenName, tokenSymbol, tokenSupply);
     }
 
     useEffect(() => {
