@@ -6,42 +6,64 @@ import { XCircleIcon } from '@heroicons/react/solid'
 
 
 const NFTCollection = (props) => {
-    const [tokenName, setTokenName] = useState('');
-    const [tokenSymbol, setTokenSymbol] = useState('');
-    const [tokenSupply, setTokenSupply] = useState();
-    const [tokenUri, setTokenUri] = useState('');
-    const [price, setPrice] = useState();
 
-    const nameChangeHandler = (event) => {
-        setTokenName(event.target.value);
+    const [nftDetails, setNftDetails] = useState({
+      tokenName: '',
+      tokenSymbol: '',
+      tokenSupply: 0,
+      tokenUri: '',
+      price: 0
+     });
+
+    // OnChange Handlers
+    // const nameChangeHandler = (event) => {
+    //   setNftDetails(() => {
+    //     return {...nftDetails, tokenName: event.target.value}
+    //    });
+    // }
+
+    // const symbolChangeHandler = (event) => {
+    //   setNftDetails(() => {
+    //         return {...nftDetails, tokenSymbol: event.target.value}
+    //     });
+    // }
+
+    // const supplyChangeHandler = (event) => {
+    //   setNftDetails(() => {
+    //         return {...nftDetails, tokenSupply: event.target.value}
+    //     });
+    // }
+
+    const changeHandler = (event) => {
+      setNftDetails(() => {
+        return {...nftDetails, tokenName: data1}
+      });
+
+      setNftDetails(() => {
+        return {...nftDetails, tokenSymbol: data2}
+      });
+
+      setNftDetails(() => {
+        return {...nftDetails, tokenSupply: data3}
+      });
+
+      setNftDetails(() => {
+        return {...nftDetails, tokenUri: data4}
+      });
+
+      setNftDetails(() => {
+        return {...nftDetails, price: data4}
+      });
     }
-
-    const symbolChangeHandler = (event) => {
-        setTokenSymbol(event.target.value);
-    }
-
-    const supplyChangeHandler = (event) => {
-        setTokenSupply(event.target.value);
-    }
-
-
-    const uriChangeHandler = (event) => {
-        setTokenUri(event.target.value);
-    }
-
-    const priceChangeHandler = (event) => {
-        setPrice(event.target.value);
-    }
-
 
     useEffect(() => {
-      props.pd(tokenName, tokenSymbol, tokenSupply, tokenUri, price);
-    
+      props.pd(nftDetails.tokenName, nftDetails.tokenSymbol, nftDetails.tokenSupply, nftDetails.tokenUri, nftDetails.price);
     }, [])
 
 
   return (
-   <><div className="bg-slate-300 dark:bg-slate-600
+   <>
+   <div className="bg-slate-300 dark:bg-slate-600
    text-slate-600 dark:text-white px-20 py-20">
 
     <form>
@@ -58,7 +80,7 @@ const NFTCollection = (props) => {
             text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block 
             w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 
             dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Shiba Inu" required 
-            onChange={nameChangeHandler}
+            onChange={changeHandler}
             />
         </div>
         <div>
@@ -67,7 +89,7 @@ const NFTCollection = (props) => {
             text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 
             block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 
             dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="$SINU" required 
-                onChange={symbolChangeHandler}
+                onChange={changeHandler}
             />
         </div>
 
@@ -77,7 +99,7 @@ const NFTCollection = (props) => {
             text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block 
             w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 
             dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="1000" required 
-                onChange={supplyChangeHandler}
+                onChange={changeHandler}
             />
         </div>
 
@@ -87,7 +109,7 @@ const NFTCollection = (props) => {
             text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block 
             w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 
             dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Pinata Link IPFS" required 
-                onChange={uriChangeHandler}
+                onChange={changeHandler}
             />
         </div>
 
@@ -97,7 +119,7 @@ const NFTCollection = (props) => {
             text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block 
             w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 
             dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="1000" required 
-                onChange={priceChangeHandler}
+                onChange={changeHandler}
             />
         </div>
 

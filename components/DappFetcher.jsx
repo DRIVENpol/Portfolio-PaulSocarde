@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react'
 
-import { networkParams } from "./dapps/Utils/Networks";
 import { ethers } from "ethers";
 import Web3Modal from "web3modal";
 import { providerOptions } from "./dapps/Utils/providerOptions";
+import { networkParams } from "./dapps/Utils/Networks";
 
 import ConnectSection from './dapps/ConnectSection'
 import CreateERC20 from './dapps/CreateERC20';
@@ -27,9 +27,11 @@ const DappFetcher = () => {
     const [verified, setVerified] = useState();
 
     // ERC20
-    const [tokenName, setTokenN] = useState('');
-    const [tokenSymbol, setTokenSy] = useState('');
-    const [tokenSupply, setTokenSu] = useState();
+    const [tokenDetails, setTokenDetails] = useState({
+      tokenName: '',
+      tokenSymbol: '',
+      tokenSupply: 0
+  });
 
     // NFTs
     const [_tokenName, setTokenName] = useState('');
@@ -52,22 +54,21 @@ const DappFetcher = () => {
     // Delay
     function sleep(ms) {
       return new Promise(resolve => setTimeout(resolve, ms));
-  }
+    }
 
     // Manipulate notifications
     const manipulateNotif = async() => {
       setIsNotif(true);
       await sleep(50000);
       setIsNotif(false);
-  }
+    }
 
-  const manipulateNotifNft = async() => {
-    setIsNotifNft(true);
-    await sleep(50000);
-    setIsNotifNft(false);
-}
+    const manipulateNotifNft = async() => {
+      setIsNotifNft(true);
+      await sleep(50000);
+      setIsNotifNft(false);
+    }
 
-  
 
     // Smart Contracts
     const erc20Factory = "0x778E1337F8B05B3A69551a01f03004a9D3118a27";
@@ -75,18 +76,27 @@ const DappFetcher = () => {
 
     // Pull data from child to parent
     const pull_data = (data1, data2, data3) => {
-      setTokenN(data1);
-      setTokenSy(data2);
-      setTokenSu(data3);
+
+      setTokenDetails(() => {
+        return {...tokenDetails, tokenName: data1}
+      });
+
+      setTokenDetails(() => {
+        return {...tokenDetails, tokenSymbol: data2}
+      });
+
+      setTokenDetails(() => {
+      return {...tokenDetails, tokenSupply: data3}
+      });
     }
 
     // Pull data from child to parent
-    const pull_dataNft = (data1, data2, data3, data5, data6) => {
+    const pull_dataNft = (data1, data2, data3, data4, data5) => {
       setTokenName(data1);
       setTokenSymbol(data2);
       setTokenSupply(data3);
-      setTokenUri(data5);
-      setPrice(data6);
+      setTokenUri(data4);
+      setPrice(data5);
     }
 
     const createNft = async () => {
@@ -138,7 +148,7 @@ const DappFetcher = () => {
           const connectedContract = new ethers.Contract(erc20Factory, abi, signer);
   
   
-          let _createERC20 = await connectedContract.createToken(tokenName, tokenSymbol, tokenSupply, {gasLimit:6000000});
+          let _createERC20 = await connectedContract.createToken(tokenDetails.tokenName, tokenDetails.tokenSymbol, tokenDetails.tokenSupply, {gasLimit:6000000});
           setIsLoading(true);
           await _createERC20.wait();
           setIsLoading(false);

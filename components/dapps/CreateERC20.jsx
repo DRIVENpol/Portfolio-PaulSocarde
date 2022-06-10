@@ -5,31 +5,41 @@ import { XCircleIcon } from '@heroicons/react/solid'
 
 
 const CreateERC20 = (props) => {
-    const [tokenName, setTokenName] = useState('');
-    const [tokenSymbol, setTokenSymbol] = useState('');
-    const [tokenSupply, setTokenSupply] = useState();
+
+    const [tokenDetails, setTokenDetails] = useState({
+        tokenName: '',
+        tokenSymbol: '',
+        tokenSupply: 0
+    });
 
     const nameChangeHandler = (event) => {
-        setTokenName(event.target.value);
+        setTokenDetails((prevState) => {
+        return {...prevState, tokenName: event.target.value}
+    });
     }
 
     const symbolChangeHandler = (event) => {
-        setTokenSymbol(event.target.value);
+        setTokenDetails((prevState) => {
+            return {...prevState, tokenSymbol: event.target.value}
+        });
     }
 
     const supplyChangeHandler = (event) => {
-        setTokenSupply(event.target.value);
+        setTokenDetails((prevState) => {
+            return {...prevState, tokenSupply: event.target.value}
+        });
     }
 
   useEffect(() => {
-    props.pd(tokenName, tokenSymbol, tokenSupply);
+    props.pd(tokenDetails.tokenName, tokenDetails.tokenSymbol, tokenDetails.tokenSupply);
   
   }, [])
   
 
 
   return (
-   <><div className="bg-slate-400 dark:bg-slate-700 px-20 py-20">
+   <>
+   <div className="bg-slate-400 dark:bg-slate-700 px-20 py-20">
 
     <form>
     <div className="grid gap-6 lg:grid-cols-2">
