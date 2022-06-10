@@ -15,14 +15,17 @@ const CreateERC20 = (props) => {
     // OnChange Handlers
     const nameChangeHandler = (event) => {
         setTokenName(event.target.value);
+        setProps();
     }
 
     const symbolChangeHandler = (event) => {
         setTokenSymbol(event.target.value);
+        setProps();
     }
 
     const supplyChangeHandler = (event) => {
         setTokenSupply(event.target.value);
+        setProps();
     }
 
     // Transfer props to parent
@@ -30,9 +33,6 @@ const CreateERC20 = (props) => {
         props.pd(tokenName, tokenSymbol, tokenSupply);
     }
 
-    useEffect(() => {
-     setProps();
-    }, [])
     
 
   return (
