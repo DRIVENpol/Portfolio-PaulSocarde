@@ -33,6 +33,11 @@ const CreateERC20 = (props) => {
         props.pd(tokenName, tokenSymbol, tokenSupply);
     }
 
+    useEffect(() => {
+        setProps();
+    }, [])
+    
+
     
 
   return (
