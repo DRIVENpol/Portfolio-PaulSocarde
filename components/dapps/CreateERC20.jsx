@@ -12,19 +12,6 @@ const CreateERC20 = (props) => {
     const [tokenSupply, setTokenSupply] = useState(0);
 
 
-    // OnChange Handlers
-    // const nameChangeHandler = (event) => {
-    //     setTokenName(event.target.value);
-    // }
-
-    // const symbolChangeHandler = (event) => {
-    //     setTokenSymbol(event.target.value);
-    // }
-
-    // const supplyChangeHandler = (event) => {
-    //     setTokenSupply(event.target.value);
-    // }
-
     // Transfer props to parent
     props.pd(tokenName, tokenSymbol, tokenSupply);
  
