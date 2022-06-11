@@ -16,6 +16,7 @@ const DappFetcher = () => {
     // Smart Contracts
     const erc20Factory = "0x778E1337F8B05B3A69551a01f03004a9D3118a27";
     const nftFactory = "0xd038BE62C33286f946AD66B9Bc613e28F863389f";
+    const tokenLocker = "0xa0ba2d35f4e25Fb7ce6C9fc0e2c50A5A30175398";
 
     // Wallet Connect
     const [provider, setProvider] = useState();
@@ -25,6 +26,7 @@ const DappFetcher = () => {
     const [isError, setError] = useState("");
     const [isErrorErc, setErrorErc] = useState("");
     const [isErrorNft, setErrorNft] = useState("");
+    const [isErrorLock, setErrorLock] = useState("");
     const [chainId, setChainId] = useState();
     const [network, setNetwork] = useState();
     const [message, setMessage] = useState("");
@@ -43,9 +45,15 @@ const DappFetcher = () => {
     const [_tokenUri, setTokenUri] = useState('');
     const [_price, setPrice] = useState();
 
+    // Locks
+    const [tAddress, setTAddress] = useState('');
+    const [tAmount, setTAmount] = useState();
+    const [tPeriod, setTPeriod] = useState();
+
     // Loading states
     const [loading, setIsLoading] = useState(false);
     const [loadingNft, setIsLoadingNft] = useState(false);
+    const [loadingToken, setIsLoadingToken] = useState(false);
 
     // Notifications & Transactions
     const [isNotif, setIsNotif] = useState(false);
@@ -53,6 +61,9 @@ const DappFetcher = () => {
 
     const [isNotifNft, setIsNotifNft] = useState(false);
     const [transactionNft, setTransactionNft] = useState("");
+
+    const [isNotifLock, setIsNotifLock] = useState(false);
+    const [transactionLock, setTransactionLock] = useState("");
 
     // Delay
     function sleep(ms) {
@@ -72,6 +83,12 @@ const DappFetcher = () => {
     setIsNotifNft(false);
     }
 
+    const manipulateNotifLock = async() => {
+      setIsNotifLock(true);
+      await sleep(50000);
+      setIsNotifLock(false);
+      }
+
     // Pull data from child to parent
     const pull_data = (data1, data2, data3) => {
       setTokenN(data1);
@@ -86,6 +103,12 @@ const DappFetcher = () => {
       setTokenSupply(data3);
       setTokenUri(data4);
       setPrice(data5);
+    }
+
+    const pull_dataLock = (data1, data2, data3) => {
+      setTAddress(data1);
+      setTAmount(data2);
+      setTPeriod(data3);
     }
 
     const createNft = async () => {
@@ -151,6 +174,40 @@ const DappFetcher = () => {
   
         } catch (error) {
           setErrorErc(error);
+        }
+      }
+     
+    };
+
+    const createLock = async () => {
+      if (typeof window !== 'undefined'){
+        try {
+          
+          const { ethereum } = window;
+          const provider = new ethers.providers.Web3Provider(ethereum);
+          const signer = provider.getSigner();
+  
+          setProvider(provider);
+          setLibrary(library);
+  
+          const abi = ["function depositTokens(address _theToken, uint256 _amount, uint256 _lockTime) public"]
+          const connectedContract = new ethers.Contract(tokenLocker, abi, signer);
+  
+  
+          let _tokenLock = await connectedContract.depositTokens(tAddress, tAmount, tPeriod, {gasLimit:6000000});
+          setIsLoadingToken(true);
+          await _tokenLock.wait();
+          setIsLoadingToken(false);
+          manipulateNotifLock();
+
+  
+          console.log(_tokenLock);
+          console.log(`Mined, see transaction: https://rinkeby.etherscan.io/tx/${_tokenLock.hash}`);
+          setTransactionLock(`https://rinkeby.etherscan.io/tx/${_tokenLock.hash}`);
+  
+  
+        } catch (error) {
+          setErrorLock(error);
         }
       }
      
@@ -312,7 +369,7 @@ const DappFetcher = () => {
         <ConnectSection cw={connectWallet} ac={account} />
         <CreateERC20 ac={account} pd={pull_data} c={createErc20} il={loading} tx={transaction} in={isNotif} err={isErrorErc.message} />
         <NftCollection ac={account} pd={pull_dataNft} c={createNft} il={loadingNft} tx={transactionNft} in={isNotifNft} err={isErrorNft.message} />
-        <TokenLocker ac={account} />
+        <TokenLocker ac={account} pd={pull_dataLock} c={createLock} il={loadingToken} tx={transactionLock} in={isNotifLock} err={isErrorLock.message} />
         <Stake ac={account} />
     </>
   )
