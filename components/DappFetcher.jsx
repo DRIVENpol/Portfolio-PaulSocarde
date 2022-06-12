@@ -55,6 +55,8 @@ const DappFetcher = () => {
     const [loadingNft, setIsLoadingNft] = useState(false);
     const [loadingToken, setIsLoadingToken] = useState(false);
 
+    const [ercApprove, setErcApprove] = useState(false);
+
     // Notifications & Transactions
     const [isNotif, setIsNotif] = useState(false);
     const [transaction, setTransaction] = useState("");
@@ -176,7 +178,44 @@ const DappFetcher = () => {
           setErrorErc(error);
         }
       }
-     
+    };
+
+    const approveErc20 = async () => {
+      if (typeof window !== 'undefined'){
+        try {
+          
+          const { ethereum } = window;
+          const provider = new ethers.providers.Web3Provider(ethereum);
+          const signer = provider.getSigner();
+  
+          setProvider(provider);
+          setLibrary(library);
+  
+          const abi = ["function approve(address spender, uint256 amount) public returns (bool)",
+          "function allowance(address owner, address spender) public view returns (uint256)"];
+          
+          const connectedContract = new ethers.Contract(tAddress, abi, provider);
+  
+  
+          let _isApproved = await connectedContract.allowance(account, tokenLocker);
+          setErcApprove(_isApproved.toNumber());
+          console.log(_isApproved.toNumber());
+
+          // setIsLoading(true);
+          // await _createERC20.wait();
+          // setIsLoading(false);
+          // manipulateNotif();
+
+  
+          // console.log(_createERC20);
+          // console.log(`Mined, see transaction: https://rinkeby.etherscan.io/tx/${_createERC20.hash}`);
+          // setTransaction(`https://rinkeby.etherscan.io/tx/${_createERC20.hash}`);
+  
+  
+        } catch (error) {
+          
+        }
+      }
     };
 
     const createLock = async () => {
@@ -369,7 +408,8 @@ const DappFetcher = () => {
         <ConnectSection cw={connectWallet} ac={account} />
         <CreateERC20 ac={account} pd={pull_data} c={createErc20} il={loading} tx={transaction} in={isNotif} err={isErrorErc.message} />
         <NftCollection ac={account} pd={pull_dataNft} c={createNft} il={loadingNft} tx={transactionNft} in={isNotifNft} err={isErrorNft.message} />
-        <TokenLocker ac={account} pd={pull_dataLock} c={createLock} il={loadingToken} tx={transactionLock} in={isNotifLock} err={isErrorLock.message} />
+        <TokenLocker ac={account} pd={pull_dataLock} c={createLock} il={loadingToken} tx={transactionLock} in={isNotifLock} 
+        err={isErrorLock.message} a={approveErc20}  amountApproved={ercApprove} />
         <Stake ac={account} />
     </>
   )

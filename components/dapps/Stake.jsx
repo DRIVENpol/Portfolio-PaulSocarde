@@ -8,7 +8,8 @@ const Stake = (props) => {
     <form>
     <div className="grid gap-6 lg:grid-cols-2">
      <div>
-        <p className="text-3xl  font-poppins pt-5 font-semibold">Stake Your Tokens</p>
+        <p className="text-3xl font-poppins pt-5 font-semibold">Stake Your Tokens</p>
+        <p className="text-xl font-poppins pt-5 font-normal">And get rewards in PolTheDev Token ($PTD)</p>
      </div>
      
      <div></div>
