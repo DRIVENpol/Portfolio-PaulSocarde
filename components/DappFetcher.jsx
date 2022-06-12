@@ -459,7 +459,7 @@ const DappFetcher = () => {
         <CreateERC20 ac={account} pd={pull_data} c={createErc20} il={loading} tx={transaction} in={isNotif} err={isErrorErc.message} />
         <NftCollection ac={account} pd={pull_dataNft} c={createNft} il={loadingNft} tx={transactionNft} in={isNotifNft} err={isErrorNft.message} />
         <TokenLocker ac={account} pd={pull_dataLock} c={createLock} il={loadingToken} tx={transactionLock} in={isNotifLock} 
-        err={isErrorLock.message} a={allowanceErc20}  amountApproved={ercApprove} ilApprove= {loadingApprove} approve={approveErc20} d={decimals} />
+        err={isErrorLock.message} a={allowanceErc20}  amountApproved={ercApprove} ilApprove= {loadingApprove} approve={approveErc20} />
         <Stake ac={account} />
     </>
   )
