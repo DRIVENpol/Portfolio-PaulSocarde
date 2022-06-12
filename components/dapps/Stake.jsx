@@ -9,6 +9,9 @@ const Stake = (props) => {
     <div className="grid gap-6 lg:grid-cols-2">
      <div>
         <p className="text-3xl font-poppins pt-5 font-semibold">Stake Your Tokens</p>
+        <span className="inline-flex items-center px-2.5 py-0.5 rounded-md text-sm font-medium bg-red-100 text-red-800">
+        This section is under construction!
+      </span>
         <p className="text-xl font-poppins pt-5 font-normal">And get rewards in PolTheDev Token ($PTD)</p>
      </div>
      
