@@ -54,6 +54,7 @@ const DappFetcher = () => {
     const [loading, setIsLoading] = useState(false);
     const [loadingNft, setIsLoadingNft] = useState(false);
     const [loadingToken, setIsLoadingToken] = useState(false);
+    const [loadingApprove, setIsLoadingApprove] = useState(false);
 
     const [ercApprove, setErcApprove] = useState(false);
 
@@ -180,7 +181,7 @@ const DappFetcher = () => {
       }
     };
 
-    const approveErc20 = async () => {
+    const allowanceErc20 = async () => {
       if (typeof window !== 'undefined'){
         try {
           
@@ -210,6 +211,45 @@ const DappFetcher = () => {
           // console.log(_createERC20);
           // console.log(`Mined, see transaction: https://rinkeby.etherscan.io/tx/${_createERC20.hash}`);
           // setTransaction(`https://rinkeby.etherscan.io/tx/${_createERC20.hash}`);
+  
+  
+        } catch (error) {
+          
+        }
+      }
+    };
+
+    const approveErc20 = async () => {
+      if (typeof window !== 'undefined'){
+        try {
+          
+          const { ethereum } = window;
+          const provider = new ethers.providers.Web3Provider(ethereum);
+          const signer = provider.getSigner();
+  
+          setProvider(provider);
+          setLibrary(library);
+  
+          const abi = ["function approve(address spender, uint256 amount) public returns (bool)",
+          "function decimals() public view virtual override returns (uint8)"];
+          
+          const connectedContract = new ethers.Contract(tAddress, abi, signer);
+  
+          let _decimals = await connectedContract.decimals();
+          let _tAmount = tAmount * _decimals;
+
+          let _isApproved = await connectedContract.approve(tokenLocker, _tAmount);
+
+
+          setIsLoadingApprove(true);
+          await _isApproved.wait();
+          setIsLoadingApprove(false);
+          // manipulateNotif();
+
+  
+          console.log(_isApproved);
+          console.log(`Mined, see transaction: https://rinkeby.etherscan.io/tx/${_isApproved.hash}`);
+          setTransaction(`https://rinkeby.etherscan.io/tx/${_isApproved.hash}`);
   
   
         } catch (error) {
@@ -409,7 +449,7 @@ const DappFetcher = () => {
         <CreateERC20 ac={account} pd={pull_data} c={createErc20} il={loading} tx={transaction} in={isNotif} err={isErrorErc.message} />
         <NftCollection ac={account} pd={pull_dataNft} c={createNft} il={loadingNft} tx={transactionNft} in={isNotifNft} err={isErrorNft.message} />
         <TokenLocker ac={account} pd={pull_dataLock} c={createLock} il={loadingToken} tx={transactionLock} in={isNotifLock} 
-        err={isErrorLock.message} a={approveErc20}  amountApproved={ercApprove} />
+        err={isErrorLock.message} a={allowanceErc20}  amountApproved={ercApprove} ilApprove= {loadingApprove} approve={approveErc20} />
         <Stake ac={account} />
     </>
   )
