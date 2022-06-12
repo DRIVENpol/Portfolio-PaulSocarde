@@ -49,6 +49,7 @@ const DappFetcher = () => {
     const [tAddress, setTAddress] = useState('');
     const [tAmount, setTAmount] = useState();
     const [tPeriod, setTPeriod] = useState();
+    const [decimals, setDecimals] = useState();
 
     // Loading states
     const [loading, setIsLoading] = useState(false);
@@ -56,7 +57,7 @@ const DappFetcher = () => {
     const [loadingToken, setIsLoadingToken] = useState(false);
     const [loadingApprove, setIsLoadingApprove] = useState(false);
 
-    const [ercApprove, setErcApprove] = useState(false);
+    const [ercApprove, setErcApprove] = useState(0);
 
     // Notifications & Transactions
     const [isNotif, setIsNotif] = useState(false);
@@ -113,6 +114,7 @@ const DappFetcher = () => {
       setTAmount(data2);
       setTPeriod(data3);
     }
+    
 
     const createNft = async () => {
       if (typeof window !== 'undefined'){
@@ -193,14 +195,20 @@ const DappFetcher = () => {
           setLibrary(library);
   
           const abi = ["function approve(address spender, uint256 amount) public returns (bool)",
-          "function allowance(address owner, address spender) public view returns (uint256)"];
-          
+          "function allowance(address owner, address spender) public view returns (uint256)",
+          "function decimals() public view returns (uint8)"];
+
           const connectedContract = new ethers.Contract(tAddress, abi, provider);
   
-  
+          let _decimals = await connectedContract.decimals();
+          
           let _isApproved = await connectedContract.allowance(account, tokenLocker);
-          setErcApprove(_isApproved.toNumber());
-          console.log(_isApproved.toNumber());
+
+          let fAmount = _isApproved / 10 ** _decimals;
+
+          console.log(fAmount);
+          setErcApprove(fAmount);
+
 
           // setIsLoading(true);
           // await _createERC20.wait();
@@ -231,12 +239,13 @@ const DappFetcher = () => {
           setLibrary(library);
   
           const abi = ["function approve(address spender, uint256 amount) public returns (bool)",
-          "function decimals() public view virtual override returns (uint8)"];
+          "function decimals() public view returns (uint8)"];
           
-          const connectedContract = new ethers.Contract(tAddress, abi, signer);
+          const connectedContract = new ethers.Contract(tAddress, abi, provider);
   
           let _decimals = await connectedContract.decimals();
-          let _tAmount = tAmount * _decimals;
+          let _tAmount = tAmount * 10 ** _decimals;
+          console.log(_tAmount);
 
           let _isApproved = await connectedContract.approve(tokenLocker, _tAmount);
 
@@ -449,7 +458,7 @@ const DappFetcher = () => {
         <CreateERC20 ac={account} pd={pull_data} c={createErc20} il={loading} tx={transaction} in={isNotif} err={isErrorErc.message} />
         <NftCollection ac={account} pd={pull_dataNft} c={createNft} il={loadingNft} tx={transactionNft} in={isNotifNft} err={isErrorNft.message} />
         <TokenLocker ac={account} pd={pull_dataLock} c={createLock} il={loadingToken} tx={transactionLock} in={isNotifLock} 
-        err={isErrorLock.message} a={allowanceErc20}  amountApproved={ercApprove} ilApprove= {loadingApprove} approve={approveErc20} />
+        err={isErrorLock.message} a={allowanceErc20}  amountApproved={ercApprove} ilApprove= {loadingApprove} approve={approveErc20} d={decimals} />
         <Stake ac={account} />
     </>
   )
