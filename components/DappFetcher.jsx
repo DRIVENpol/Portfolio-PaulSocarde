@@ -47,9 +47,9 @@ const DappFetcher = () => {
 
     // Locks
     const [tAddress, setTAddress] = useState('');
-    const [tAmount, setTAmount] = useState();
+    const [tAmount, setTAmount] = useState(0);
     const [tPeriod, setTPeriod] = useState();
-    const [decimals, setDecimals] = useState();
+    const [decimals, setDecimals] = useState(0);
 
     // Loading states
     const [loading, setIsLoading] = useState(false);
@@ -241,18 +241,19 @@ const DappFetcher = () => {
           const abi = ["function approve(address spender, uint256 amount) public returns (bool)",
           "function decimals() public view returns (uint8)"];
           
-          const connectedContract = new ethers.Contract(tAddress, abi, provider);
+          const connectedContract = new ethers.Contract(tAddress, abi, signer);
   
           let _decimals = await connectedContract.decimals();
           let _tAmount = tAmount * 10 ** _decimals;
           console.log(_tAmount);
 
-          let _isApproved = await connectedContract.approve(tokenLocker, _tAmount);
+          let _isApproved = await connectedContract.approve(tokenLocker, _tAmount.toString());
 
 
           setIsLoadingApprove(true);
           await _isApproved.wait();
           setIsLoadingApprove(false);
+          allowanceErc20();
           // manipulateNotif();
 
   
