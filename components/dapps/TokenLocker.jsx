@@ -50,6 +50,7 @@ const TokenLocker = (props) => {
             dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="500" required 
             onChange={(event) => {
                 setTAmount(event.target.value);
+                props.a();
                 }}
             />
         </div>
